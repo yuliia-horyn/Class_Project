@@ -1,0 +1,4 @@
+Robot-dog. Kid'sToy. 2021. 2300. 5000
+Xiaomi-RoboRock. VacuumCleaner. 2020. 13000. 3500
+LogicPower. WindowCleaner. 2019. 5000. 300
+Robot-dog. Kid'sToy. 2020. 1900. 400
