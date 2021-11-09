@@ -8,12 +8,10 @@ using namespace std;
 
 Processing::Processing(int max_value): droneRepository(max_value), robotRepository(max_value)
 {
-	ReadDroneFromFile();
-	ReadRobotFromFile();
+	//ReadDroneFromFile();
+	//ReadRobotFromFile();
 }
-Processing::~Processing()
-{
-}
+Processing::~Processing(){}
 
 void Processing::AddDrone(Drone& drone)
 {
@@ -44,7 +42,7 @@ void Processing::PrintRobot()
 void Processing::ReadDroneFromFile()
 {
 	string text;
-	ifstream MyReadDrones("In_drones.txt");
+	ifstream MyReadDrones("C:\\Users\\goryn\\Documents\\projects\\Class_Project\\task1\\task1\\In_drones.txt");
 	while (getline(MyReadDrones, text)) {
 		int index = 0;
 		int k = 0;
@@ -74,7 +72,7 @@ void Processing::ReadDroneFromFile()
 void Processing::ReadRobotFromFile()
 {
 	string text;
-	ifstream MyReadRobot("In_robot.txt");
+	ifstream MyReadRobot("C:\\Users\\goryn\\Documents\\projects\\Class_Project\\task1\\task1\\In_robot.txt");
 	while (getline(MyReadRobot, text)) {
 		int index = 0;
 		int k = 0;

@@ -1,4 +1,0 @@
-Drones:
-0) Robot: Robot-dog Kid'sToy 2021 2300 5000
-1) Robot: Xiaomi-RoboRock VacuumCleaner 2020 13000 3500
-2) Robot: LogicPower WindowCleaner 2019 5000 300

@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include<string>
+#include<fstream>
 #include "Error.h"
 using namespace std;
 
@@ -32,7 +33,7 @@ public:
 	
 	string to_str()
 	{
-		return "Robot: " + brand + " " + function + " " + to_string(year) + " " + to_string(price) + " " + to_string(quantity);
+		return brand + " " + function + " " + to_string(year) + " " + to_string(price) + " " + to_string(quantity);
 	}
 	string GetBrand()
 	{
@@ -84,6 +85,32 @@ public:
 	bool operator>(Robot& robot)
 	{
 		return this->quantity > robot.quantity;
+	}
+	friend ifstream& operator>>(ifstream& fin, Robot& robot) {
+		int max = 100;
+		char* buff = new char[max + 1];
+
+		fin.get(buff, max, ' ');
+		robot.brand = buff;
+		fin.get();
+
+		fin.get(buff, max, ' ');
+		robot.function = buff;
+		fin.get();
+
+		fin.get(buff, max, ' ');
+		robot.year = atoi(buff);
+		fin.get();
+
+		fin.get(buff, max, ' ');
+		robot.price = atoi(buff);
+		fin.get();
+
+		fin.getline(buff, max);
+		robot.quantity = atoi(buff);
+
+		delete[] buff;
+		return fin;
 	}
 };
 

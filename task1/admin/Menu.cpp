@@ -41,8 +41,8 @@ void Menu::showMainMenu()
 
 void Menu::showAndHadnleAddDroneMenu()
 {
-	
-	cout << "Enter the property of drone using space: " << endl;           
+
+	cout << "Enter the property of drone using space: " << endl;
 	Drone drone;
 	cin >> drone;
 	processing.AddDrone(drone);
@@ -96,7 +96,7 @@ void Menu::handleUserInput(char user_input)
 	Drone drone3("WL toys", "cw110", 2020, 35000, 1087);
 	Drone drones[] = { drone1,drone2,drone3 };
 	Info info1("+380964680466", "Lviv, Chervonoyi Kalyny 46", "Lviv, M.Dragomanov57", "drones13@gmail.com");
-	
+
 	switch (user_input)
 	{
 	case '1':
@@ -124,7 +124,7 @@ void Menu::handleUserInput(char user_input)
 		processing.GetMostPopularDroneBrand();
 		cout << "\nMost popular drone robot is ";
 		processing.GetMostPopularRobotBrand();
-		break; 
+		break;
 	case '5':
 		cout << "Most cheapest drone cost ";
 		processing.GetTheCheapestDrone();
@@ -151,7 +151,7 @@ void Menu::handleUserInput(char user_input)
 		cout << " robots" << endl;
 		break;
 	case '8':
-		cout << "Bigger quantity " << processing.GetBiggerQuantity( drone1, drone2) << endl;
+		cout << "Bigger quantity " << processing.GetBiggerQuantity(drone1, drone2) << endl;
 		break;
 	case '9':
 		int idx;

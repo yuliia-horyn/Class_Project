@@ -9,7 +9,22 @@ class Repository {
 	T* entities;
 	int max_value;
 	int current_value;
+	bool sync = true;
 
+	void SyncWrite()
+	{
+		if (sync)
+			WriteToFile();
+	}
+
+	void SyncRead()
+	{
+		if (sync)
+		{
+			current_value = 0;
+			ReadFromFile();
+		}
+	}
 public:
 	Repository(int max_value = 100)
 	{
@@ -29,6 +44,7 @@ public:
 			throw Error(ErrorCode::MaxSizeReached);
 
 		entities[current_value++] = item;
+		SyncWrite();
 	}
 	void Remove(int index)
 	{
@@ -39,9 +55,11 @@ public:
 			entities[i] = entities[i + 1];
 
 		current_value--;
+		SyncWrite();
 	}
 	void Print()
 	{
+		SyncRead();
 		cout << GetTitle() << endl;
 		for (int i = 0; i < current_value; i++)
 		{
@@ -114,13 +132,29 @@ protected:
 	void WriteToFile()
 	{
 		ofstream Write_in_File(GetFileName());
-		Write_in_File << "Drones/Robot:\n";
 		for (int i = 0; i < current_value; i++)
 		{
-			Write_in_File << i << ") " << entities[i].to_str() << endl;
+			Write_in_File << entities[i].to_str();
+			if (i + 1 != current_value)
+				Write_in_File << endl;
 		}
 		Write_in_File.close();
 	
 	}
-	
+	void ReadFromFile()
+	{
+		bool prevSync = sync;
+		sync = false;
+
+		ifstream fin(GetFileName());
+		while (!fin.eof())
+		{
+			T item;
+			fin >> item;
+			Add(item);
+		}
+		fin.close();
+
+		sync = prevSync;
+	}
 };

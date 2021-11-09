@@ -2,6 +2,7 @@
 #include"Error.h"
 #include <string>
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 Drone::Drone(string brand, string model , int p_year, int p_price, int p_quantity)
@@ -22,7 +23,7 @@ Drone::Drone(string brand, string model , int p_year, int p_price, int p_quantit
 
 string Drone::to_str()
 {
-	return "Drone: " + brand + " " + model + " " + to_string(year) + " " + to_string(price) + " " + to_string(quantity);
+	return  brand + " " + model + " " + to_string(year) + " " + to_string(price) + " " + to_string(quantity);
 }
 
  string Drone::GetBrand()
@@ -75,4 +76,31 @@ bool operator!=(const Drone& drone1, const Drone& drone2){
 bool Drone::operator>(Drone& drone)
 {
 	return this->quantity > drone.quantity;
+}
+ifstream& operator>>(ifstream& fin, Drone& drone)
+{
+	int max = 100;
+	char* buff = new char[max + 1];
+
+	fin.get(buff, max, ' ');
+	drone.brand = buff;
+	fin.get();
+
+	fin.get(buff, max, ' ');
+	drone.model = buff;
+	fin.get();
+
+	fin.get(buff, max, ' ');
+	drone.year = atoi(buff);
+	fin.get();
+
+	fin.get(buff, max, ' ');
+	drone.price = atoi(buff);
+	fin.get();
+
+	fin.getline(buff, max);
+	drone.quantity = atoi(buff);
+
+	delete[] buff;
+	return fin;
 }

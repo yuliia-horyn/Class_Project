@@ -1,6 +1,0 @@
-Drones:
-0) Drone: Wl toys q323 2021 23000 2341
-1) Drone: Ryse er231 2020 31000 1231
-2) Drone: Fly tp231 2019 25000 3421
-3) Drone: WL toys cr212 2019 30000 2451
-4) Drone: DJ Mavic T300 2020 19000 2312
