@@ -5,6 +5,7 @@
 #include "Repository.h"
 #include <iostream>
 #include <string>
+#include<vector>
 #include "Info.h"
 using namespace std;
 
@@ -48,7 +49,7 @@ void Menu::safeHandleUserInput(char user_input)
 
 void Menu::handleUserInput(char user_input)
 {
-	Info info1("+380964680466", "Lviv, Chervonoyi Kalyny 46", "Lviv, M.Dragomanov57", "drones13@gmail.com");
+	vector<Information*> inf;
 	switch (user_input)
 	{
 	
@@ -83,7 +84,19 @@ void Menu::handleUserInput(char user_input)
 		cout << " robots" << endl;
 		break;
 	case '5':
-		info1.PrintInfo();
+		int choice;
+		cout << "Enter 1 to get information as user or 2 to get information as admin";
+		cin >> choice;
+			
+		inf.push_back(Information::show_info(choice));
+		
+		for (int i = 0; i < inf.size(); i++) {
+			inf[i]->get_c();
+		}
+		for (int i = 0; i < inf.size(); i++) {
+			delete inf[i];
+		}
+		break;
 		break;
 	case '0':
 		break;

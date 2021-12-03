@@ -5,6 +5,7 @@
 #include "Repository.h"
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Info.h"
 using namespace std;
 
@@ -95,8 +96,7 @@ void Menu::handleUserInput(char user_input)
 	Drone drone2("WL toys", "cr212", 2019, 30000, 2451);
 	Drone drone3("WL toys", "cw110", 2020, 35000, 1087);
 	Drone drones[] = { drone1,drone2,drone3 };
-	Info info1("+380964680466", "Lviv, Chervonoyi Kalyny 46", "Lviv, M.Dragomanov57", "drones13@gmail.com");
-
+	vector<Information*> inf;
 	switch (user_input)
 	{
 	case '1':
@@ -132,7 +132,18 @@ void Menu::handleUserInput(char user_input)
 		processing.GetTheCheapestRobot();
 		break;
 	case '6':
-		info1.PrintInfo();
+		
+		int choice;
+		cout << "Enter 1 to get information as user or 2 to get information as admin"<<endl;
+		cin >> choice;	
+		inf.push_back(Information::show_info(choice));
+		
+		for (int i = 0; i < inf.size(); i++) {
+			inf[i]->get_c();
+		}
+		for (int i = 0; i < inf.size(); i++) {
+			delete inf[i];
+		}
 		break;
 	case '7':
 		int year2;
